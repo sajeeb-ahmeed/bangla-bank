@@ -39,6 +39,13 @@ document.getElementById('withdraw-button').addEventListener('click', function ()
     const newTotalWidthdrraw = newWithdraw + widthdrawAmount;
     withdrawCurrent.innerText = newTotalWidthdrraw;
 
-
+    // Total Balance Update 
+    const balance = document.getElementById('balance-total');
+    const balanceTotalText = balance.innerText;
+    const balanceTotal = parseFloat(balanceTotalText);
+    const newTotalBalance = balanceTotal - widthdrawAmount;
+    balance.innerText = newTotalBalance;
+    // clear input 
+    withdrawInput.value = '';
 
 })
