@@ -1,4 +1,5 @@
 // handle deposit button 
+
 document.getElementById('deposit-button').addEventListener('click', function () {
 
 
@@ -22,10 +23,12 @@ document.getElementById('deposit-button').addEventListener('click', function () 
     balance.innerText = newTotalBalance;
 
     // clear input 
+
     depositInput.value = '';
 })
 
 // handle withdraw  button 
+
 document.getElementById('withdraw-button').addEventListener('click', function () {
 
     const withdrawInput = document.getElementById('withdraw-amount');
@@ -40,12 +43,15 @@ document.getElementById('withdraw-button').addEventListener('click', function ()
     withdrawCurrent.innerText = newTotalWidthdrraw;
 
     // Total Balance Update 
+
     const balance = document.getElementById('balance-total');
     const balanceTotalText = balance.innerText;
     const balanceTotal = parseFloat(balanceTotalText);
     const newTotalBalance = balanceTotal - widthdrawAmount;
     balance.innerText = newTotalBalance;
+
     // clear input 
     withdrawInput.value = '';
 
 })
+// play with DOM
