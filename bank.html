@@ -36,7 +36,32 @@
             </div>
         </section>
         <!-- deposit and withdraw  -->
+        <section>
+            <div class="grid gap-4 grid-cols-2  font-bold  mt-12 font-bold ">
+                <div class="bg-pink-200 text-center p-5 rounded">
+                    <h3 class="font-bold text-2xl ">Please Deposit</h3>
+                    <input id="deposit-amount"
+                        class="block text-center mx-auto mt-4 p-2 rounded border border-teal-200 outline-orange-100"
+                        placeholder="$ Amount You Deposit" type="text" required>
 
+
+
+                    <button id="deposit-button" class="bg-blue-500 px-2 py-1 mt-4 font-semibold rounded text-white"
+                        type="submit">Deposit</button>
+                </div>
+                <div class="bg-fuchsia-200 text-center p-5 rounded">
+                    <h3 class="font-bold text-2xl "> Please Withdraw</h3>
+                    <input id="withdraw-amount"
+                        class="block text-center mx-auto mt-4 p-2 rounded border border-teal-200 outline-orange-100"
+                        placeholder="$ Amount You Withdraw" type="text" required>
+
+                    <button id="withdraw-button" class="bg-blue-500 px-2 py-1 mt-4 font-semibold rounded text-white"
+                        type="submit">Withdraw</button>
+                </div>
+
+
+            </div>
+        </section>
     </main>
     <script src="scripts/bank.js"></script>
 </body>
