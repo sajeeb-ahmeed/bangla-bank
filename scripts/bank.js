@@ -24,3 +24,14 @@ document.getElementById('deposit-button').addEventListener('click', function () 
     // clear input 
     depositInput.value = '';
 })
+
+// handle withdraw  button 
+document.getElementById('withdraw-button').addEventListener('click', function () {
+
+    const withdrawInput = document.getElementById('withdraw-amount');
+    const withdrawinputText = withdrawInput.value;
+    const widthdrawAmount = parseFloat(withdrawinputText);
+
+
+
+})
