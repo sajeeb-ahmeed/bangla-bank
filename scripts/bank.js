@@ -32,6 +32,13 @@ document.getElementById('withdraw-button').addEventListener('click', function ()
     const withdrawinputText = withdrawInput.value;
     const widthdrawAmount = parseFloat(withdrawinputText);
 
+    // NEW widthdrW TOTAL UPDATE 
+    const withdrawCurrent = document.getElementById('withdraw-current');
+    const withdrawCurrentText = withdrawCurrent.innerText;
+    const newWithdraw = parseFloat(withdrawCurrentText);
+    const newTotalWidthdrraw = newWithdraw + widthdrawAmount;
+    withdrawCurrent.innerText = newTotalWidthdrraw;
+
 
 
 })
