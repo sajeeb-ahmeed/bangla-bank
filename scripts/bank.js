@@ -1,57 +1,71 @@
 // handle deposit button 
+// share function 
+function innuptAmount(inputId) {
+    const InputField = document.getElementById(inputId);
+    const inputAmountText = InputField.value;
+    const NewAmount = parseFloat(inputAmountText);
+    // clear input 
+    InputField.value = '';
+    return NewAmount;
 
-document.getElementById('deposit-button').addEventListener('click', function () {
+}
 
+function innerTextUpdate(inputTextID, amount) {
+    const currentAmont = document.getElementById(inputTextID);
+    const priviousAmountText = currentAmont.innerText;
+    const priviousAmount = parseFloat(priviousAmountText);
+    const totalAmount = priviousAmount + amount;
+    currentAmont.innerText = totalAmount;
 
-    const depositInput = document.getElementById('deposit-amount');
-    const NewDepositAmountText = depositInput.value;
-    const NewDepositAmount = parseFloat(NewDepositAmountText);
-    // console.log(depositAmount);
+}
 
-    //new deposit total update
-    const depositCurrent = document.getElementById('deposit-current');
-    const priviousDepositAmountText = depositCurrent.innerText;
-    const priviousDepositAmount = parseFloat(priviousDepositAmountText);
-    const totalDepositAmount = priviousDepositAmount + NewDepositAmount;
-    depositCurrent.innerText = totalDepositAmount;
-
-    // balance update 
+function getCurrentBalance() {
     const balance = document.getElementById('balance-total');
     const balanceTotalText = balance.innerText;
     const balanceTotal = parseFloat(balanceTotalText);
-    const newTotalBalance = balanceTotal + NewDepositAmount;
-    balance.innerText = newTotalBalance;
+    return balanceTotal;
+}
 
-    // clear input 
+function getTotalBalance(amount, ifAdd) {
+    const balance = document.getElementById('balance-total');
+    const balanceTotal = getCurrentBalance();
 
-    depositInput.value = '';
-})
+    if (ifAdd == true) {
+        const newTotalBalance = balanceTotal + amount;
+        balance.innerText = newTotalBalance;
+    } else {
+        const newTotalBalance = balanceTotal - amount;
+        balance.innerText = newTotalBalance;
+    }
+}
+
+function getClicked(e) {
+    const NewDepositAmount = innuptAmount('deposit-amount');
+    if (NewDepositAmount > 0) {
+        //new deposit total update
+        innerTextUpdate('deposit-current', NewDepositAmount);
+        // balance update 
+        getTotalBalance(NewDepositAmount, true)
+    }
+
+}
 
 // handle withdraw  button 
+function withdraw(e) {
+    const widthdrawAmount = innuptAmount('withdraw-amount');
+    const currentBanalce = getCurrentBalance();
 
-document.getElementById('withdraw-button').addEventListener('click', function () {
+    const getequal = widthdrawAmount - currentBanalce; // check cureent vs withdraw amount for alert msg 
 
-    const withdrawInput = document.getElementById('withdraw-amount');
-    const withdrawinputText = withdrawInput.value;
-    const widthdrawAmount = parseFloat(withdrawinputText);
 
-    // NEW widthdrW TOTAL UPDATE 
-    const withdrawCurrent = document.getElementById('withdraw-current');
-    const withdrawCurrentText = withdrawCurrent.innerText;
-    const newWithdraw = parseFloat(withdrawCurrentText);
-    const newTotalWidthdrraw = newWithdraw + widthdrawAmount;
-    withdrawCurrent.innerText = newTotalWidthdrraw;
+    if (widthdrawAmount > 0 && widthdrawAmount < currentBanalce) {
+        //new withdraw total update
+        innerTextUpdate('withdraw-current', widthdrawAmount);
+        // Total Balance Update  
+        getTotalBalance(widthdrawAmount, false)
+    }
+    if (widthdrawAmount > currentBanalce) {
+        alert(`You can't withdraw more than your current Balance ,Thanks. Please Deposit More = ${getequal} $`)
+    }
 
-    // Total Balance Update 
-
-    const balance = document.getElementById('balance-total');
-    const balanceTotalText = balance.innerText;
-    const balanceTotal = parseFloat(balanceTotalText);
-    const newTotalBalance = balanceTotal - widthdrawAmount;
-    balance.innerText = newTotalBalance;
-
-    // clear input 
-    withdrawInput.value = '';
-
-})
-// play with DOM
+}
