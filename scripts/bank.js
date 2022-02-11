@@ -1,4 +1,5 @@
 // handle deposit button 
+
 // share function 
 function innuptAmount(inputId) {
     const InputField = document.getElementById(inputId);
@@ -39,6 +40,7 @@ function getTotalBalance(amount, ifAdd) {
     }
 }
 
+
 function getClicked(e) {
     const NewDepositAmount = innuptAmount('deposit-amount');
     if (NewDepositAmount > 0) {
@@ -46,6 +48,8 @@ function getClicked(e) {
         innerTextUpdate('deposit-current', NewDepositAmount);
         // balance update 
         getTotalBalance(NewDepositAmount, true)
+    } else {
+        alert("Please enter a positive amount, Nagitive Value Can't Count")
     }
 
 }
@@ -63,9 +67,9 @@ function withdraw(e) {
         innerTextUpdate('withdraw-current', widthdrawAmount);
         // Total Balance Update  
         getTotalBalance(widthdrawAmount, false)
+    } else if (widthdrawAmount > currentBanalce) {
+        alert(`You can't withdraw more than your current Balance ,Thanks. Please Deposit More =  ${getequal} $`)
+    } else {
+        alert("Please enter a positive amount, Nagitive Value Can't Count")
     }
-    if (widthdrawAmount > currentBanalce) {
-        alert(`You can't withdraw more than your current Balance ,Thanks. Please Deposit More = ${getequal} $`)
-    }
-
 }
